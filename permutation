@@ -1,0 +1,23 @@
+#include <iostream>
+using namespace std;
+
+void permute(string str, int low, int high) 
+{
+	if (low == high)
+		cout << str << endl;
+	else
+		for (int i = low; i <= high; i++)
+		{
+			swap(str[low], str[i]);
+
+			permute(str, low + 1, high);
+		}
+}
+
+int main()
+{
+	string word;
+	cout << "Enter a word: ";
+	cin >> word;
+	permute(word, 0, word.size() - 1);
+}
