@@ -1,0 +1,110 @@
+#include <iostream>
+using namespace std;
+class Stack {
+
+#define MAXIMUM 30
+public:
+	int stack[MAXIMUM];
+	int top1 = -1;
+	int top2 = 9;
+	int top3 = 19;
+
+	bool pushToS1(int val);
+	bool pushToS2(int val);
+	bool pushToS3(int val);
+	bool popS1();
+	bool popS2();
+	bool popS3();
+	void printAll();
+};
+
+bool Stack::pushToS1(int val) {
+	if (top1 == MAXIMUM - 21) {
+		cout << "Stack 1 has reached limit.\n";
+		return false;
+	}
+	else
+	{
+		stack[++top1] = val;
+		cout << val << " has been added to stack 1.\n";
+		return true;
+	}
+}
+bool Stack::pushToS2(int val) {
+	if (top2 == MAXIMUM - 11) {
+		cout << "Stack 2 has reached limit.\n";
+		return false;
+	}
+	else
+	{
+		stack[++top2] = val;
+		cout << val << " has been added to stack 2.\n";
+		return true;
+	}
+}
+bool Stack::pushToS3(int val) {
+	if (top3 == MAXIMUM - 1) {
+		cout << "Stack 3 has reached limit.\n";
+		return false;
+	}
+	else
+	{
+		stack[++top3] = val;
+		cout << val << " has been added to stack 3.\n";
+		return true;
+	}
+}
+
+bool Stack::popS1() {
+	if (top1 < 0)
+	{
+		cout << "Stack 1 is empty.\n";
+		return false;
+	}
+	else
+	{
+		stack[--top1];
+		return true;
+	}
+}
+bool Stack::popS2() {
+	if (top2 == 9)
+	{
+		cout << "Stack 2 is empty.\n";
+		return false;
+	}
+	else
+	{
+		stack[--top2];
+		return true;
+	}
+}
+bool Stack::popS3() {
+	if (top3 == 19)
+	{
+		cout << "Stack 3 is empty.\n";
+		return false;
+	}
+	else
+	{
+		stack[--top3];
+		return true;
+	}
+}
+void Stack::printAll() {
+	for (int i = 0; i <= top1; i++)
+	{
+		cout << stack[i] << " ";
+	}
+	cout << "\n";
+	for (int i = 10; i <= top2; i++)
+	{
+		cout << stack[i] << " ";
+	}
+	cout << "\n";
+	for (int i = 20; i <= top3; i++)
+	{
+		cout << stack[i] << " ";
+	}
+	cout << "\n";
+}
