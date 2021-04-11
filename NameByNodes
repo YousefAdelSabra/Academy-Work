@@ -1,0 +1,61 @@
+int main(){
+
+	Node* Y1 = new Node(0, NULL);
+	Node* Y2 = new Node(0, NULL);
+	Node* Y3 = new Node(0, NULL);
+	Node* Y4 = new Node(0, NULL);
+	/******************************/
+	Node* o1 = new Node(0, NULL);
+	Node* o2 = new Node(0, NULL);
+	Node* o3 = new Node(0, NULL);
+	Node* o4 = new Node(0, NULL);
+	/******************************/
+	Node* u1 = new Node(0, NULL);
+	Node* u2 = new Node(0, NULL);
+	Node* u3 = new Node(0, NULL);
+	Node* u4 = new Node(0, NULL);
+	/******************************/
+	Node* s1 = new Node(0, NULL);
+	Node* s2 = new Node(0, NULL);
+	Node* s3 = new Node(0, NULL);
+	Node* s4 = new Node(0, NULL);
+	Node* s5 = new Node(0, NULL);
+	Node* s6 = new Node(0, NULL);
+	/******************************/
+	Node* e1 = new Node(0, NULL);
+	Node* e2 = new Node(0, NULL);
+	Node* e3 = new Node(0, NULL);
+	Node* e4 = new Node(0, NULL);
+	/******************************/
+	Node* f1 = new Node(0, NULL);
+	Node* f2 = new Node(0, NULL);
+	Node* f3 = new Node(0, NULL);
+	Node* f4 = new Node(0, NULL);
+	/******************************/
+	Y1->next = Y3;
+	Y2->next = Y3;
+	Y3->next = Y4;
+	/**************/
+	o1->next = o2;
+	o2->next = o3;
+	o3->next = o4;
+	o4->next = o1;
+	/**************/
+	u1->next = u2;
+	u2->next = u3;
+	u3->next = u4;
+	/**************/
+	s1->next = s2;
+	s2->next = s3;
+	s3->next = s4;
+	s4->next = s5;
+	s5->next = s6;
+	/**************/
+	e1->next = e2;
+	e2->next = e3;
+	e3->next = e4;
+	/**************/
+	f1->next = f2;
+	f2->next = f3;
+	f3->next = f4;
+}
