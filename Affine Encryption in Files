@@ -1,0 +1,95 @@
+#
+#
+# Affine Encryption & Decryption of a file by Yousef Adel - 19108685 - Group 'B'
+#
+#
+
+# Put full path of text file here
+path = ""
+
+alphabet_to_num = {
+    'a': 0, 'b': 1, 'c': 2, 
+    'd': 3, 'e': 4, 'f': 5, 
+    'g': 6, 'h': 7, 'i': 8, 
+    'j': 9, 'k': 10, 'l': 11, 
+    'm': 12, 'n': 13, 'o': 14, 
+    'p': 15, 'q': 16, 'r': 17, 
+    's': 18, 't': 19, 'u': 20, 
+    'v': 21, 'w': 22, 'x': 23, 
+    'y': 24, 'z': 25
+    }
+
+num_to_alphabet = {
+    0: 'a', 1: 'b', 2: 'c',
+    3: 'd', 4: 'e', 5: 'f',
+    6: 'g', 7: 'h', 8: 'i',
+    9: 'j', 10: 'k', 11: 'l',
+    12: 'm', 13: 'n', 14: 'o',
+    15: 'p', 16: 'q', 17: 'r',
+    18: 's', 19: 't', 20: 'u',
+    21: 'v', 22: 'w', 23: 'x',
+    24: 'y', 25: 'z'
+    }
+
+def affine_encrypt(a, m, b):
+
+    m = m.replace(" ", "")
+    coded_letters = []
+    result = []
+    letters = list(m.strip(""))
+
+    for i in range(len(letters)):
+        coded_letters.append((a * alphabet_to_num[letters[i]] + b) % 26)
+        result.append(num_to_alphabet[coded_letters[i]])
+
+    return ''.join(result)
+
+def affine_decrypt(a, m, b):
+
+    m = m.replace(" ", "")
+    a_inverse_checker = 0
+    a_inverse = 0
+
+    for i in range(26):
+        a_inverse_checker = (a * i) % 26
+        if a_inverse_checker == 1:
+            a_inverse = i
+
+    coded_letters = []
+    result = []
+    letters = list(m.strip(""))
+
+    for i in range(len(letters)):
+        coded_letters.append((a_inverse * (alphabet_to_num[letters[i]] - b)) % 26)
+        result.append(num_to_alphabet[coded_letters[i]])
+
+    return ''.join(result)
+
+
+crypt = input("\n\nEncryption or decryption? e/d: ")
+a = int(input("Enter a: "))
+b = int(input("Enter b: "))
+
+if crypt == 'e':
+    with open(path) as f:
+        lines = f.readlines()
+
+    for i in range(len(lines)):
+        with open(path, 'w') as f:
+            f.write(affine_encrypt(a, lines[i], b))
+
+
+if crypt == 'd':
+    with open(path) as f:
+        lines = f.readlines()
+
+    for i in range(len(lines)):
+        with open(path, 'w') as f:
+            f.write(affine_decrypt(a, lines[i], b))
+
+
+
+# Example for testing:
+# Plaintext: student
+# a: 7, b: 3
+# Ciphertext: zgnyfqg
